@@ -1,5 +1,5 @@
 # Taxonomy
-We share scripts used for analyse cryptic species
+This repository contains an R script used for analyze cryptic species
 
 ---
 
