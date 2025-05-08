@@ -16,10 +16,10 @@ _DOI: [to be added]_
 ## 📫 Contact
 
 For questions, feedback, or contributions, please contact:  
-**Ezequiel Alberto Cruz Campuzano**  
+**Ezequiel Alberto Cruz-Campuzano**  
 ezequielcruz.1997@gmail.com
 
-**Julieta Alvarez Manjarrez** 
+**Julieta Alvarez-Manjarrez, PhD** 
 julieta.alvarez@ib.unam.mx 
 
 ---
