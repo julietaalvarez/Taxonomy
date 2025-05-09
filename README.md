@@ -48,6 +48,7 @@ Plots are annotated with:
 - Means
 - Significant group comparisons
 - Test statistics
+![Example_Boxplot+Violin_Nonparametric](https://github.com/user-attachments/assets/1f24611c-673d-45fb-aa8f-896246b89161)
 
 ---
 
