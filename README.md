@@ -54,6 +54,9 @@ The output can be further customized to:
 - Export plots as .png or .pdf
 - Combine multiple genes or loci in a composite figure
 
+ ![Example_LocusSimilarity_DensityPlots](https://github.com/user-attachments/assets/f0ac3f02-5389-4246-816d-11be21496039)
+
+
 ---
 
 ## 📘 Dependencies
