@@ -1,0 +1,157 @@
+##################################################################
+#     DNA Sequence Similarity Analysis across cryptic species    #
+#     Density Distribution Plot for Intra vs. Interspecific      #
+#     Comparisons (e.g., ITS, LSU or other loci)                 #
+##################################################################
+# Author: Ezequiel Alberto Cruz Campuzano                     #
+# Citation: Cruz-Campuzano et al., 2025: _DOI_                #
+##################################################################
+
+## This script reads a similarity matrix (CSV), reshapes it,
+## classifies pairwise comparisons, and generates a density plot
+## illustrating intra- vs. interspecific variation in sequence similarity,
+## focused on a selected focal species (e.g., a new species vs. lookalikes).
+
+# ===============================================================
+# STEP 1: Install and Load Required Packages
+# ===============================================================
+
+required_packages <- c("ggplot2", "dplyr", "tidyr", "stringr", 
+                       "readr", "showtext", "sysfonts", "scales")
+invisible(lapply(required_packages, function(pkg) {
+  if (!requireNamespace(pkg, quietly = TRUE)) install.packages(pkg)
+  library(pkg, character.only = TRUE)
+}))
+
+font_add_google("Roboto", "roboto")
+showtext_auto()
+
+# ===============================================================
+# STEP 2: Load Pairwise Similarity Matrix (CSV)
+# ===============================================================
+
+## NOTE: The input file must be a square matrix with specimen labels
+## in the first column and as column headers. Similarities must be % values.
+
+similarity_file <- "Similarity_matrix_example.csv"  # <- Change filename as needed
+sim_data <- read_csv(similarity_file, show_col_types = FALSE)
+colnames(sim_data)[1] <- "Specimen1"
+
+# ===============================================================
+# STEP 3: Reshape Matrix and Extract Species Info
+# ===============================================================
+
+long_data <- sim_data %>%
+  pivot_longer(cols = -Specimen1, names_to = "Specimen2", values_to = "Similarity") %>%
+  filter(!is.na(Similarity) & Specimen1 != Specimen2) %>%
+  mutate(
+    Species1 = str_remove(Specimen1, "\\..*"),
+    Species2 = str_remove(Specimen2, "\\..*")
+  )
+
+## OPTIONAL: Rename species names for clarity (e.g., abbreviate long genus names)
+## Uncomment and modify the lines below as needed
+# long_data <- long_data %>%
+#   mutate(
+#     Species1 = str_replace_all(Species1, c(
+#       "Thelephora renispora" = "Th. renispora",
+#       "Thelephora pseudoversatilis" = "Th. pseudoversatilis",
+#       "Thelephora versatilis" = "Th. versatilis"
+#     )),
+#     Species2 = str_replace_all(Species2, c(
+#       "Thelephora renispora" = "Th. renispora",
+#       "Thelephora pseudoversatilis" = "Th. pseudoversatilis",
+#       "Thelephora versatilis" = "Th. versatilis"
+#     ))
+#   )
+
+# ===============================================================
+# STEP 4: Filter and Classify Comparisons for Focal Species
+# ===============================================================
+
+## This step focuses on comparisons involving a focal species (e.g., "Species A")
+## You can change the focal species below to adapt the plot
+
+focal_species <- "Species A"
+
+filtered_data <- long_data %>%
+  filter(Species1 %in% c("Species A", "Species B", "Species C") &
+           Species2 %in% c("Species A", "Species B", "Species C")) %>%
+  filter(Species1 == focal_species | Species2 == focal_species) %>%
+  mutate(
+    ComparisonSpecies = case_when(
+      Species1 == focal_species & Species2 == focal_species ~ focal_species,
+      Species1 == focal_species ~ Species2,
+      Species2 == focal_species ~ Species1
+    ),
+    ComparisonSpecies = factor(ComparisonSpecies, levels = c("Species A", "Species B", "Species C"))
+  )
+
+# ===============================================================
+# STEP 5: Define Custom Colors for Each Species Curve
+# ===============================================================
+
+color_palette <- c(
+  "Species A" = "#9933FF",
+  "Species B" = "#66FFFF",
+  "Species C" = "#FF6666"
+)
+
+# ===============================================================
+# STEP 6: Automatically Set X and Y Axis Limits Based on Data
+# ===============================================================
+
+# Compute density to determine Y-axis max
+density_info <- ggplot_build(
+  ggplot(filtered_data, aes(x = Similarity, fill = ComparisonSpecies)) +
+    geom_density(adjust = 1.2)
+)$data
+
+max_density <- max(sapply(density_info, function(d) max(d$y, na.rm = TRUE)), na.rm = TRUE)
+y_limit <- max_density * 1.05  # Add a small buffer to the peak
+
+# Compute X-axis range with slight expansion
+x_range <- range(filtered_data$Similarity, na.rm = TRUE)
+x_limits <- c(x_range[1] - 0.85, x_range[2] + 0.85)  # Expand each side for complete display of intraspecific distribution (e.g. by 1%, 0.5%, etc.)
+
+# ===============================================================
+# STEP 7: Generate Density Plot
+# ===============================================================
+
+ggplot(filtered_data, aes(x = Similarity, fill = ComparisonSpecies)) +
+  geom_density(alpha = 0.5, adjust = 1.2, color = "black") +
+  scale_fill_manual(values = color_palette, drop = FALSE) +
+  labs(
+    x = "Locus similarity (%)", 
+    y = "Density",
+    fill = NULL
+  ) +
+  geom_vline(xintercept = c(90.0, 92.5, 95.0, 97.5, 100.0), linetype = "dashed", color = "black") + # <- Change values depending on breaks set
+  geom_hline(
+    yintercept = seq(0, y_limit, by = 0.2),  # <- Adjusted to match Y-axis range, depending on your data
+    linetype = "dotted", color = "grey"
+  ) +
+  scale_x_continuous(
+    limits = x_limits,
+    breaks = seq(90, 100, by = 2.5), # <- Adjust based on lowest interspecific similarity for focal species
+    expand = c(0, 0)
+  ) +
+  scale_y_continuous(
+    limits = c(0, y_limit),
+    expand = c(0, 0)
+  ) +
+  theme_minimal(base_size = 14, base_family = "roboto") +
+  theme(
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_line(linetype = "dotted", color = "grey"),
+    axis.line.x = element_line(color = "black"),
+    axis.line.y = element_line(color = "black"),
+    axis.ticks = element_line(color = "black"),
+    legend.position = c(0.085, 0.93), # <- Adjust depending on distribution peaks, for better display
+    legend.background = element_rect(fill = FALSE, color = FALSE),
+    plot.title = element_blank(),
+    legend.key.size = unit(0.50, "cm"),  # Overall size (square box)
+    legend.text = element_text(size = 11),
+    axis.title = element_text(face = "bold")
+  )
+
