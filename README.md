@@ -23,7 +23,7 @@ ezequielcruz.1997@gmail.com
 julieta.alvarez@ib.unam.mx 
 
 ---
-## Documents
+## 📂 Documents
 
 - **Locus similarity**: plots to visualize genetic similarity among species based on pairwise comparison matrices 
 - **ANOVA or Kruskal-Wallis**: statistical analysis and Violin boxplot for data visualization of measurements of characters
