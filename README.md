@@ -16,11 +16,9 @@ _DOI: [to be added]_
 ## 📫 Contact
 
 For questions, feedback, or contributions, please contact:  
-**Ezequiel Alberto Cruz-Campuzano**  
-ezequielcruz.1997@gmail.com
+**Ezequiel Alberto Cruz-Campuzano**  ezequielcruz.1997@gmail.com
 
-**Julieta Alvarez-Manjarrez, PhD** 
-julieta.alvarez@ib.unam.mx 
+**Julieta Alvarez-Manjarrez, PhD**  julieta.alvarez@ib.unam.mx 
 
 ---
 ## 📂 Documents
