@@ -24,11 +24,14 @@ julieta.alvarez@ib.unam.mx
 
 ---
 ## 📂 Documents
-
-- **Locus similarity**: plots to visualize genetic similarity among species based on pairwise comparison matrices 
+  Each section provide scripts and example data to show how to format your data.
+  
+- **Locus similarity**: plots to visualize genetic similarity among species based on pairwise comparison matrices
+  https://github.com/julietaalvarez/Taxonomy/tree/Locus_similarity
 - **ANOVA or Kruskal-Wallis**: statistical analysis and Violin boxplot for data visualization of measurements of characters
+  https://github.com/julietaalvarez/Taxonomy/tree/Kruskal-Wallis_OR_ANOVA 
 - **Linear Discriminant Analysis (LDA)**: species delimitation using morphometric measurements
+  https://github.com/julietaalvarez/Taxonomy/tree/Linear_Discriminant_Analysis
 
-  Each section provide scripts and example data to demonstrate how to format your own data.
 
 ---
