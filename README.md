@@ -8,7 +8,7 @@ This repository contains an R script used for analyze cryptic species
 If you use this script in your research, please cite:
 
 **Cruz-Campuzano, E.A. et al. (2025)**  
-*Jigsaw Falling into Place: species delimitation in Thelephora, with insights into a cryptic Neotropical species complex*  
+*Cruz-Campuzano, E.A., Avila Muñoz, M., Silva-Tostado, C.E., Estrada Avendaño, A., Salas-Lizana, R., Hernández-Navarro, E., Kennedy, P., Smith, M.E., Miller, K.O., Franck, A.R., Alvarez-Manjarrez J. Jigsaw Falling into Place: species delimitation in Thelephora, with insights into a cryptic Neotropical species complex. *  
 _DOI: [to be added]_
 
 ---
