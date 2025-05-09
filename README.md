@@ -23,3 +23,12 @@ ezequielcruz.1997@gmail.com
 julieta.alvarez@ib.unam.mx 
 
 ---
+## Documents
+
+- **Locus similarity**: plots to visualize genetic similarity among species based on pairwise comparison matrices 
+- **ANOVA or Kruskal-Wallis**: statistical analysis and Violin boxplot for data visualization of measurements of characters
+- **Linear Discriminant Analysis (LDA)**: species delimitation using morphometric measurements
+
+  Each section provide scripts and example data to demonstrate how to format your own data.
+
+---
