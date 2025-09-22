@@ -17,11 +17,13 @@ _DOI: [to be added]_
 
 For questions, feedback, or contributions, please contact:  
 **Ezequiel Alberto Cruz-Campuzano**  ezequielcruz.1997@gmail.com
-
 **Julieta Alvarez-Manjarrez, PhD**  julieta.alvarez@ib.unam.mx 
 
 ---
 ## 📂 Documents
+
+  -**Alignments**: we provide the alignments used to generate our phylogenetic analysis
+  
   Each section provide scripts and example data to show how to format your data.
   
 - **Locus similarity**: plots to visualize genetic similarity among species based on pairwise comparison matrices
