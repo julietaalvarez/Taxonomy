@@ -7,8 +7,8 @@ This repository contains an R script used for analyze cryptic species
 
 If you use this script in your research, please cite:
 
-**Cruz-Campuzano, E.A. et al. (2025)**  
-*Cruz-Campuzano, E.A., Avila Muñoz, M., Silva-Tostado, C.E., Estrada Avendaño, A., Salas-Lizana, R., Hernández-Navarro, E., Kennedy, P., Smith, M.E., Miller, K.O., Franck, A.R., Alvarez-Manjarrez J. 2025. Jigsaw falling into place: species delimitation in _Thelephora_, with insights into a cryptic Neotropical species complex. *  
+**Cruz-Campuzano, E.A. et al. (202x)**  
+*Cruz-Campuzano, E.A., Avila Muñoz, M., Silva-Tostado, C.E., Estrada Avendaño, A., Salas-Lizana, R., Hernández-Navarro, E., Kennedy, P., Smith, M.E., Miller, K.O., Franck, A.R., Alvarez-Manjarrez J. 202x. Species delimitation in a cryptic Neotropical Thelephora species complex, with insights into the phylogenetic informativeness of loci *  
 _DOI: [to be added]_
 
 ---
