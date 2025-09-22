@@ -22,7 +22,8 @@ For questions, feedback, or contributions, please contact:
 ---
 ## 📂 Documents
 
-  -**Alignments**: we provide the alignments used to generate our phylogenetic analysis
+  - **Alignments**: we provide the ITS, 28S and ITS+28S alignments used to generate our phylogenetic analysis
+  https://github.com/julietaalvarez/Taxonomy/tree/Alignments
   
   Each section provide scripts and example data to show how to format your data.
   
